@@ -33,7 +33,7 @@
             this.btnDurClear = new System.Windows.Forms.Button();
             this.btnDurCalculate = new System.Windows.Forms.Button();
             this.btnDurCopy = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtDurHourlyDecimal = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.txtDurSeconds = new System.Windows.Forms.TextBox();
             this.txtDurMinutes = new System.Windows.Forms.TextBox();
@@ -61,28 +61,28 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnConvCopy = new System.Windows.Forms.Button();
+            this.btnConvClear = new System.Windows.Forms.Button();
             this.btnConvCalculate = new System.Windows.Forms.Button();
             this.txtConv2 = new System.Windows.Forms.TextBox();
             this.cmbConv2 = new System.Windows.Forms.ComboBox();
             this.txtConv1 = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.cmbConv1 = new System.Windows.Forms.ComboBox();
-            this.btnConvClear = new System.Windows.Forms.Button();
-            this.btnConvCopy = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.label16 = new System.Windows.Forms.Label();
-            this.cmbDays = new System.Windows.Forms.ComboBox();
-            this.btnDaysAdd = new System.Windows.Forms.Button();
-            this.btnDaysEdit = new System.Windows.Forms.Button();
-            this.btnDaysDelete = new System.Windows.Forms.Button();
-            this.txtDays = new System.Windows.Forms.TextBox();
-            this.dateTimePickerDays = new System.Windows.Forms.DateTimePicker();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label17 = new System.Windows.Forms.Label();
-            this.btnDaysCancel = new System.Windows.Forms.Button();
+            this.btnDaysEnter = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.txtDaysEvents = new System.Windows.Forms.TextBox();
-            this.btnDaysEnter = new System.Windows.Forms.Button();
+            this.btnDaysCancel = new System.Windows.Forms.Button();
+            this.label17 = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.dateTimePickerDays = new System.Windows.Forms.DateTimePicker();
+            this.txtDays = new System.Windows.Forms.TextBox();
+            this.btnDaysDelete = new System.Windows.Forms.Button();
+            this.btnDaysEdit = new System.Windows.Forms.Button();
+            this.btnDaysAdd = new System.Windows.Forms.Button();
+            this.cmbDays = new System.Windows.Forms.ComboBox();
+            this.label16 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -95,7 +95,7 @@
             this.groupBox1.Controls.Add(this.btnDurClear);
             this.groupBox1.Controls.Add(this.btnDurCalculate);
             this.groupBox1.Controls.Add(this.btnDurCopy);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.txtDurHourlyDecimal);
             this.groupBox1.Controls.Add(this.label14);
             this.groupBox1.Controls.Add(this.txtDurSeconds);
             this.groupBox1.Controls.Add(this.txtDurMinutes);
@@ -167,13 +167,13 @@
             this.btnDurCopy.Text = "Copy";
             this.btnDurCopy.UseVisualStyleBackColor = false;
             // 
-            // textBox1
+            // txtDurHourlyDecimal
             // 
-            this.textBox1.Location = new System.Drawing.Point(10, 238);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(75, 20);
-            this.textBox1.TabIndex = 26;
+            this.txtDurHourlyDecimal.Location = new System.Drawing.Point(10, 238);
+            this.txtDurHourlyDecimal.Name = "txtDurHourlyDecimal";
+            this.txtDurHourlyDecimal.ReadOnly = true;
+            this.txtDurHourlyDecimal.Size = new System.Drawing.Size(75, 20);
+            this.txtDurHourlyDecimal.TabIndex = 26;
             // 
             // label14
             // 
@@ -408,6 +408,30 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Time Converter";
             // 
+            // btnConvCopy
+            // 
+            this.btnConvCopy.BackColor = System.Drawing.Color.Green;
+            this.btnConvCopy.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnConvCopy.ForeColor = System.Drawing.Color.White;
+            this.btnConvCopy.Location = new System.Drawing.Point(240, 84);
+            this.btnConvCopy.Name = "btnConvCopy";
+            this.btnConvCopy.Size = new System.Drawing.Size(75, 23);
+            this.btnConvCopy.TabIndex = 17;
+            this.btnConvCopy.Text = "Copy";
+            this.btnConvCopy.UseVisualStyleBackColor = false;
+            // 
+            // btnConvClear
+            // 
+            this.btnConvClear.BackColor = System.Drawing.Color.Red;
+            this.btnConvClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnConvClear.ForeColor = System.Drawing.Color.White;
+            this.btnConvClear.Location = new System.Drawing.Point(258, 138);
+            this.btnConvClear.Name = "btnConvClear";
+            this.btnConvClear.Size = new System.Drawing.Size(75, 23);
+            this.btnConvClear.TabIndex = 18;
+            this.btnConvClear.Text = "Clear";
+            this.btnConvClear.UseVisualStyleBackColor = false;
+            // 
             // btnConvCalculate
             // 
             this.btnConvCalculate.BackColor = System.Drawing.Color.RoyalBlue;
@@ -470,30 +494,6 @@
             this.cmbConv1.Size = new System.Drawing.Size(121, 21);
             this.cmbConv1.TabIndex = 12;
             // 
-            // btnConvClear
-            // 
-            this.btnConvClear.BackColor = System.Drawing.Color.Red;
-            this.btnConvClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnConvClear.ForeColor = System.Drawing.Color.White;
-            this.btnConvClear.Location = new System.Drawing.Point(258, 138);
-            this.btnConvClear.Name = "btnConvClear";
-            this.btnConvClear.Size = new System.Drawing.Size(75, 23);
-            this.btnConvClear.TabIndex = 18;
-            this.btnConvClear.Text = "Clear";
-            this.btnConvClear.UseVisualStyleBackColor = false;
-            // 
-            // btnConvCopy
-            // 
-            this.btnConvCopy.BackColor = System.Drawing.Color.Green;
-            this.btnConvCopy.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnConvCopy.ForeColor = System.Drawing.Color.White;
-            this.btnConvCopy.Location = new System.Drawing.Point(240, 84);
-            this.btnConvCopy.Name = "btnConvCopy";
-            this.btnConvCopy.Size = new System.Drawing.Size(75, 23);
-            this.btnConvCopy.TabIndex = 17;
-            this.btnConvCopy.Text = "Copy";
-            this.btnConvCopy.UseVisualStyleBackColor = false;
-            // 
             // groupBox3
             // 
             this.groupBox3.BackColor = System.Drawing.Color.MidnightBlue;
@@ -517,103 +517,17 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Days Until";
             // 
-            // label16
+            // btnDaysEnter
             // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(7, 28);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(75, 13);
-            this.label16.TabIndex = 0;
-            this.label16.Text = "From Today to";
-            // 
-            // cmbDays
-            // 
-            this.cmbDays.FormattingEnabled = true;
-            this.cmbDays.Location = new System.Drawing.Point(88, 25);
-            this.cmbDays.Name = "cmbDays";
-            this.cmbDays.Size = new System.Drawing.Size(145, 21);
-            this.cmbDays.TabIndex = 19;
-            // 
-            // btnDaysAdd
-            // 
-            this.btnDaysAdd.BackColor = System.Drawing.Color.Green;
-            this.btnDaysAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDaysAdd.Location = new System.Drawing.Point(13, 85);
-            this.btnDaysAdd.Name = "btnDaysAdd";
-            this.btnDaysAdd.Size = new System.Drawing.Size(42, 23);
-            this.btnDaysAdd.TabIndex = 20;
-            this.btnDaysAdd.Text = "Add";
-            this.btnDaysAdd.UseVisualStyleBackColor = false;
-            // 
-            // btnDaysEdit
-            // 
-            this.btnDaysEdit.BackColor = System.Drawing.Color.RoyalBlue;
-            this.btnDaysEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDaysEdit.ForeColor = System.Drawing.Color.White;
-            this.btnDaysEdit.Location = new System.Drawing.Point(61, 85);
-            this.btnDaysEdit.Name = "btnDaysEdit";
-            this.btnDaysEdit.Size = new System.Drawing.Size(42, 23);
-            this.btnDaysEdit.TabIndex = 21;
-            this.btnDaysEdit.Text = "Edit";
-            this.btnDaysEdit.UseVisualStyleBackColor = false;
-            // 
-            // btnDaysDelete
-            // 
-            this.btnDaysDelete.BackColor = System.Drawing.Color.Red;
-            this.btnDaysDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDaysDelete.ForeColor = System.Drawing.Color.White;
-            this.btnDaysDelete.Location = new System.Drawing.Point(109, 85);
-            this.btnDaysDelete.Name = "btnDaysDelete";
-            this.btnDaysDelete.Size = new System.Drawing.Size(42, 23);
-            this.btnDaysDelete.TabIndex = 22;
-            this.btnDaysDelete.Text = "Del";
-            this.btnDaysDelete.UseVisualStyleBackColor = false;
-            // 
-            // txtDays
-            // 
-            this.txtDays.Location = new System.Drawing.Point(246, 26);
-            this.txtDays.Name = "txtDays";
-            this.txtDays.ReadOnly = true;
-            this.txtDays.Size = new System.Drawing.Size(146, 20);
-            this.txtDays.TabIndex = 5;
-            // 
-            // dateTimePickerDays
-            // 
-            this.dateTimePickerDays.Enabled = false;
-            this.dateTimePickerDays.Location = new System.Drawing.Point(13, 124);
-            this.dateTimePickerDays.Name = "dateTimePickerDays";
-            this.dateTimePickerDays.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePickerDays.TabIndex = 24;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(13, 169);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(200, 20);
-            this.textBox2.TabIndex = 25;
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(14, 153);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(52, 13);
-            this.label17.TabIndex = 8;
-            this.label17.Text = "Occasion";
-            // 
-            // btnDaysCancel
-            // 
-            this.btnDaysCancel.BackColor = System.Drawing.Color.Yellow;
-            this.btnDaysCancel.Enabled = false;
-            this.btnDaysCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDaysCancel.ForeColor = System.Drawing.Color.Black;
-            this.btnDaysCancel.Location = new System.Drawing.Point(157, 85);
-            this.btnDaysCancel.Name = "btnDaysCancel";
-            this.btnDaysCancel.Size = new System.Drawing.Size(59, 23);
-            this.btnDaysCancel.TabIndex = 23;
-            this.btnDaysCancel.Text = "Cancel";
-            this.btnDaysCancel.UseVisualStyleBackColor = false;
+            this.btnDaysEnter.BackColor = System.Drawing.Color.Green;
+            this.btnDaysEnter.Enabled = false;
+            this.btnDaysEnter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDaysEnter.Location = new System.Drawing.Point(13, 194);
+            this.btnDaysEnter.Name = "btnDaysEnter";
+            this.btnDaysEnter.Size = new System.Drawing.Size(42, 23);
+            this.btnDaysEnter.TabIndex = 26;
+            this.btnDaysEnter.Text = "Enter";
+            this.btnDaysEnter.UseVisualStyleBackColor = false;
             // 
             // groupBox4
             // 
@@ -639,17 +553,103 @@
             this.txtDaysEvents.Size = new System.Drawing.Size(181, 126);
             this.txtDaysEvents.TabIndex = 0;
             // 
-            // btnDaysEnter
+            // btnDaysCancel
             // 
-            this.btnDaysEnter.BackColor = System.Drawing.Color.Green;
-            this.btnDaysEnter.Enabled = false;
-            this.btnDaysEnter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDaysEnter.Location = new System.Drawing.Point(13, 194);
-            this.btnDaysEnter.Name = "btnDaysEnter";
-            this.btnDaysEnter.Size = new System.Drawing.Size(42, 23);
-            this.btnDaysEnter.TabIndex = 26;
-            this.btnDaysEnter.Text = "Enter";
-            this.btnDaysEnter.UseVisualStyleBackColor = false;
+            this.btnDaysCancel.BackColor = System.Drawing.Color.Yellow;
+            this.btnDaysCancel.Enabled = false;
+            this.btnDaysCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDaysCancel.ForeColor = System.Drawing.Color.Black;
+            this.btnDaysCancel.Location = new System.Drawing.Point(157, 85);
+            this.btnDaysCancel.Name = "btnDaysCancel";
+            this.btnDaysCancel.Size = new System.Drawing.Size(59, 23);
+            this.btnDaysCancel.TabIndex = 23;
+            this.btnDaysCancel.Text = "Cancel";
+            this.btnDaysCancel.UseVisualStyleBackColor = false;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(14, 153);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(52, 13);
+            this.label17.TabIndex = 8;
+            this.label17.Text = "Occasion";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(13, 169);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.ReadOnly = true;
+            this.textBox2.Size = new System.Drawing.Size(200, 20);
+            this.textBox2.TabIndex = 25;
+            // 
+            // dateTimePickerDays
+            // 
+            this.dateTimePickerDays.Enabled = false;
+            this.dateTimePickerDays.Location = new System.Drawing.Point(13, 124);
+            this.dateTimePickerDays.Name = "dateTimePickerDays";
+            this.dateTimePickerDays.Size = new System.Drawing.Size(200, 20);
+            this.dateTimePickerDays.TabIndex = 24;
+            // 
+            // txtDays
+            // 
+            this.txtDays.Location = new System.Drawing.Point(246, 26);
+            this.txtDays.Name = "txtDays";
+            this.txtDays.ReadOnly = true;
+            this.txtDays.Size = new System.Drawing.Size(146, 20);
+            this.txtDays.TabIndex = 5;
+            // 
+            // btnDaysDelete
+            // 
+            this.btnDaysDelete.BackColor = System.Drawing.Color.Red;
+            this.btnDaysDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDaysDelete.ForeColor = System.Drawing.Color.White;
+            this.btnDaysDelete.Location = new System.Drawing.Point(109, 85);
+            this.btnDaysDelete.Name = "btnDaysDelete";
+            this.btnDaysDelete.Size = new System.Drawing.Size(42, 23);
+            this.btnDaysDelete.TabIndex = 22;
+            this.btnDaysDelete.Text = "Del";
+            this.btnDaysDelete.UseVisualStyleBackColor = false;
+            // 
+            // btnDaysEdit
+            // 
+            this.btnDaysEdit.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btnDaysEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDaysEdit.ForeColor = System.Drawing.Color.White;
+            this.btnDaysEdit.Location = new System.Drawing.Point(61, 85);
+            this.btnDaysEdit.Name = "btnDaysEdit";
+            this.btnDaysEdit.Size = new System.Drawing.Size(42, 23);
+            this.btnDaysEdit.TabIndex = 21;
+            this.btnDaysEdit.Text = "Edit";
+            this.btnDaysEdit.UseVisualStyleBackColor = false;
+            // 
+            // btnDaysAdd
+            // 
+            this.btnDaysAdd.BackColor = System.Drawing.Color.Green;
+            this.btnDaysAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDaysAdd.Location = new System.Drawing.Point(13, 85);
+            this.btnDaysAdd.Name = "btnDaysAdd";
+            this.btnDaysAdd.Size = new System.Drawing.Size(42, 23);
+            this.btnDaysAdd.TabIndex = 20;
+            this.btnDaysAdd.Text = "Add";
+            this.btnDaysAdd.UseVisualStyleBackColor = false;
+            // 
+            // cmbDays
+            // 
+            this.cmbDays.FormattingEnabled = true;
+            this.cmbDays.Location = new System.Drawing.Point(88, 25);
+            this.cmbDays.Name = "cmbDays";
+            this.cmbDays.Size = new System.Drawing.Size(145, 21);
+            this.cmbDays.TabIndex = 19;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(7, 28);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(75, 13);
+            this.label16.TabIndex = 0;
+            this.label16.Text = "From Today to";
             // 
             // Frm_Main
             // 
@@ -682,7 +682,7 @@
         private System.Windows.Forms.Button btnDurClear;
         private System.Windows.Forms.Button btnDurCalculate;
         private System.Windows.Forms.Button btnDurCopy;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtDurHourlyDecimal;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox txtDurSeconds;
         private System.Windows.Forms.TextBox txtDurMinutes;

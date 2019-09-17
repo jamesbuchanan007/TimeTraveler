@@ -44,5 +44,24 @@ namespace TimeTraveler
                 return duration;
             }
         }
+
+        public double Hourly
+        {
+            get
+            {
+                var days = DurationDays.Days;
+                var hours = DurationDays.Hours;
+                var minutes = DurationDays.Minutes;
+                var seconds = DurationDays.Seconds;
+                var decimalDays = days * 24;
+                var decimalHours = hours;
+                var decimalMinutes = minutes / 60;
+                var decimalSeconds = seconds / 3600;
+
+                var time = decimalDays + decimalHours + decimalMinutes + decimalSeconds;
+
+                return time;
+            }
+        }
     }
 }

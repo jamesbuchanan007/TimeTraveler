@@ -64,7 +64,5 @@ namespace TimeTraveler
                 return time;
             }
         }
-
-       
     }
 }

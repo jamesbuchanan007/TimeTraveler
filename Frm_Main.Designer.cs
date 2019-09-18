@@ -64,9 +64,9 @@
             this.btnConvCopy = new System.Windows.Forms.Button();
             this.btnConvClear = new System.Windows.Forms.Button();
             this.btnConvCalculate = new System.Windows.Forms.Button();
-            this.txtConv2 = new System.Windows.Forms.TextBox();
+            this.txtConvResult = new System.Windows.Forms.TextBox();
             this.cmbConv2 = new System.Windows.Forms.ComboBox();
-            this.txtConv1 = new System.Windows.Forms.TextBox();
+            this.txtConvRequest = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.cmbConv1 = new System.Windows.Forms.ComboBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -141,6 +141,7 @@
             this.btnDurClear.TabIndex = 11;
             this.btnDurClear.Text = "Clear";
             this.btnDurClear.UseVisualStyleBackColor = false;
+            this.btnDurClear.Click += new System.EventHandler(this.BtnDurClear_Click);
             // 
             // btnDurCalculate
             // 
@@ -166,6 +167,7 @@
             this.btnDurCopy.TabIndex = 10;
             this.btnDurCopy.Text = "Copy";
             this.btnDurCopy.UseVisualStyleBackColor = false;
+            this.btnDurCopy.Click += new System.EventHandler(this.BtnDurCopy_Click);
             // 
             // txtDurHourlyDecimal
             // 
@@ -174,6 +176,7 @@
             this.txtDurHourlyDecimal.ReadOnly = true;
             this.txtDurHourlyDecimal.Size = new System.Drawing.Size(75, 20);
             this.txtDurHourlyDecimal.TabIndex = 26;
+            this.txtDurHourlyDecimal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label14
             // 
@@ -191,6 +194,7 @@
             this.txtDurSeconds.ReadOnly = true;
             this.txtDurSeconds.Size = new System.Drawing.Size(47, 20);
             this.txtDurSeconds.TabIndex = 24;
+            this.txtDurSeconds.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtDurMinutes
             // 
@@ -199,6 +203,7 @@
             this.txtDurMinutes.ReadOnly = true;
             this.txtDurMinutes.Size = new System.Drawing.Size(47, 20);
             this.txtDurMinutes.TabIndex = 23;
+            this.txtDurMinutes.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtDurHours
             // 
@@ -207,6 +212,7 @@
             this.txtDurHours.ReadOnly = true;
             this.txtDurHours.Size = new System.Drawing.Size(47, 20);
             this.txtDurHours.TabIndex = 22;
+            this.txtDurHours.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtDurDays
             // 
@@ -215,6 +221,7 @@
             this.txtDurDays.ReadOnly = true;
             this.txtDurDays.Size = new System.Drawing.Size(47, 20);
             this.txtDurDays.TabIndex = 21;
+            this.txtDurDays.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label13
             // 
@@ -267,6 +274,7 @@
             this.txtSecEnd.Name = "txtSecEnd";
             this.txtSecEnd.Size = new System.Drawing.Size(27, 20);
             this.txtSecEnd.TabIndex = 8;
+            this.txtSecEnd.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtMinEnd
             // 
@@ -274,6 +282,7 @@
             this.txtMinEnd.Name = "txtMinEnd";
             this.txtMinEnd.Size = new System.Drawing.Size(27, 20);
             this.txtMinEnd.TabIndex = 7;
+            this.txtMinEnd.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtHourEnd
             // 
@@ -281,6 +290,7 @@
             this.txtHourEnd.Name = "txtHourEnd";
             this.txtHourEnd.Size = new System.Drawing.Size(27, 20);
             this.txtHourEnd.TabIndex = 6;
+            this.txtHourEnd.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtSecStart
             // 
@@ -288,6 +298,7 @@
             this.txtSecStart.Name = "txtSecStart";
             this.txtSecStart.Size = new System.Drawing.Size(27, 20);
             this.txtSecStart.TabIndex = 5;
+            this.txtSecStart.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtMinStart
             // 
@@ -295,6 +306,7 @@
             this.txtMinStart.Name = "txtMinStart";
             this.txtMinStart.Size = new System.Drawing.Size(27, 20);
             this.txtMinStart.TabIndex = 4;
+            this.txtMinStart.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtHourStart
             // 
@@ -302,6 +314,7 @@
             this.txtHourStart.Name = "txtHourStart";
             this.txtHourStart.Size = new System.Drawing.Size(27, 20);
             this.txtHourStart.TabIndex = 3;
+            this.txtHourStart.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label6
             // 
@@ -395,15 +408,15 @@
             this.groupBox2.Controls.Add(this.btnConvCopy);
             this.groupBox2.Controls.Add(this.btnConvClear);
             this.groupBox2.Controls.Add(this.btnConvCalculate);
-            this.groupBox2.Controls.Add(this.txtConv2);
+            this.groupBox2.Controls.Add(this.txtConvResult);
             this.groupBox2.Controls.Add(this.cmbConv2);
-            this.groupBox2.Controls.Add(this.txtConv1);
+            this.groupBox2.Controls.Add(this.txtConvRequest);
             this.groupBox2.Controls.Add(this.label15);
             this.groupBox2.Controls.Add(this.cmbConv1);
             this.groupBox2.ForeColor = System.Drawing.Color.White;
             this.groupBox2.Location = new System.Drawing.Point(12, 299);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(424, 169);
+            this.groupBox2.Size = new System.Drawing.Size(424, 145);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Time Converter";
@@ -413,44 +426,48 @@
             this.btnConvCopy.BackColor = System.Drawing.Color.Green;
             this.btnConvCopy.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnConvCopy.ForeColor = System.Drawing.Color.White;
-            this.btnConvCopy.Location = new System.Drawing.Point(240, 84);
+            this.btnConvCopy.Location = new System.Drawing.Point(158, 110);
             this.btnConvCopy.Name = "btnConvCopy";
             this.btnConvCopy.Size = new System.Drawing.Size(75, 23);
             this.btnConvCopy.TabIndex = 17;
             this.btnConvCopy.Text = "Copy";
             this.btnConvCopy.UseVisualStyleBackColor = false;
+            this.btnConvCopy.Click += new System.EventHandler(this.BtnConvCopy_Click);
             // 
             // btnConvClear
             // 
             this.btnConvClear.BackColor = System.Drawing.Color.Red;
             this.btnConvClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnConvClear.ForeColor = System.Drawing.Color.White;
-            this.btnConvClear.Location = new System.Drawing.Point(258, 138);
+            this.btnConvClear.Location = new System.Drawing.Point(258, 110);
             this.btnConvClear.Name = "btnConvClear";
             this.btnConvClear.Size = new System.Drawing.Size(75, 23);
             this.btnConvClear.TabIndex = 18;
             this.btnConvClear.Text = "Clear";
             this.btnConvClear.UseVisualStyleBackColor = false;
+            this.btnConvClear.Click += new System.EventHandler(this.BtnConvClear_Click);
             // 
             // btnConvCalculate
             // 
             this.btnConvCalculate.BackColor = System.Drawing.Color.RoyalBlue;
             this.btnConvCalculate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnConvCalculate.ForeColor = System.Drawing.Color.White;
-            this.btnConvCalculate.Location = new System.Drawing.Point(339, 138);
+            this.btnConvCalculate.Location = new System.Drawing.Point(339, 110);
             this.btnConvCalculate.Name = "btnConvCalculate";
             this.btnConvCalculate.Size = new System.Drawing.Size(75, 23);
             this.btnConvCalculate.TabIndex = 16;
             this.btnConvCalculate.Text = "Calculate";
             this.btnConvCalculate.UseVisualStyleBackColor = false;
+            this.btnConvCalculate.Click += new System.EventHandler(this.BtnConvCalculate_Click);
             // 
-            // txtConv2
+            // txtConvResult
             // 
-            this.txtConv2.Location = new System.Drawing.Point(134, 85);
-            this.txtConv2.Name = "txtConv2";
-            this.txtConv2.ReadOnly = true;
-            this.txtConv2.Size = new System.Drawing.Size(100, 20);
-            this.txtConv2.TabIndex = 15;
+            this.txtConvResult.Location = new System.Drawing.Point(134, 71);
+            this.txtConvResult.Name = "txtConvResult";
+            this.txtConvResult.ReadOnly = true;
+            this.txtConvResult.Size = new System.Drawing.Size(100, 20);
+            this.txtConvResult.TabIndex = 15;
+            this.txtConvResult.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // cmbConv2
             // 
@@ -460,22 +477,23 @@
             "Hours",
             "Minutes",
             "Seconds"});
-            this.cmbConv2.Location = new System.Drawing.Point(7, 84);
+            this.cmbConv2.Location = new System.Drawing.Point(7, 70);
             this.cmbConv2.Name = "cmbConv2";
             this.cmbConv2.Size = new System.Drawing.Size(121, 21);
             this.cmbConv2.TabIndex = 14;
             // 
-            // txtConv1
+            // txtConvRequest
             // 
-            this.txtConv1.Location = new System.Drawing.Point(134, 21);
-            this.txtConv1.Name = "txtConv1";
-            this.txtConv1.Size = new System.Drawing.Size(100, 20);
-            this.txtConv1.TabIndex = 13;
+            this.txtConvRequest.Location = new System.Drawing.Point(134, 21);
+            this.txtConvRequest.Name = "txtConvRequest";
+            this.txtConvRequest.Size = new System.Drawing.Size(100, 20);
+            this.txtConvRequest.TabIndex = 13;
+            this.txtConvRequest.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(55, 56);
+            this.label15.Location = new System.Drawing.Point(55, 49);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(22, 13);
             this.label15.TabIndex = 1;
@@ -510,7 +528,7 @@
             this.groupBox3.Controls.Add(this.cmbDays);
             this.groupBox3.Controls.Add(this.label16);
             this.groupBox3.ForeColor = System.Drawing.Color.White;
-            this.groupBox3.Location = new System.Drawing.Point(13, 484);
+            this.groupBox3.Location = new System.Drawing.Point(13, 455);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(423, 231);
             this.groupBox3.TabIndex = 2;
@@ -582,6 +600,7 @@
             this.textBox2.ReadOnly = true;
             this.textBox2.Size = new System.Drawing.Size(200, 20);
             this.textBox2.TabIndex = 25;
+            this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // dateTimePickerDays
             // 
@@ -598,6 +617,7 @@
             this.txtDays.ReadOnly = true;
             this.txtDays.Size = new System.Drawing.Size(146, 20);
             this.txtDays.TabIndex = 5;
+            this.txtDays.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // btnDaysDelete
             // 
@@ -656,7 +676,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkBlue;
-            this.ClientSize = new System.Drawing.Size(454, 737);
+            this.ClientSize = new System.Drawing.Size(454, 701);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -711,9 +731,9 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button btnConvCalculate;
-        private System.Windows.Forms.TextBox txtConv2;
+        private System.Windows.Forms.TextBox txtConvResult;
         private System.Windows.Forms.ComboBox cmbConv2;
-        private System.Windows.Forms.TextBox txtConv1;
+        private System.Windows.Forms.TextBox txtConvRequest;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.ComboBox cmbConv1;
         private System.Windows.Forms.Button btnConvCopy;

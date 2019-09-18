@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Windows.Forms;
 
 namespace TimeTraveler
 {
@@ -55,13 +56,15 @@ namespace TimeTraveler
                 var seconds = DurationDays.Seconds;
                 var decimalDays = days * 24;
                 var decimalHours = hours;
-                var decimalMinutes = minutes / 60;
-                var decimalSeconds = seconds / 3600;
+                var decimalMinutes = minutes / 60.0;
+                var decimalSeconds = seconds / 3600.0;
 
                 var time = decimalDays + decimalHours + decimalMinutes + decimalSeconds;
 
                 return time;
             }
         }
+
+       
     }
 }

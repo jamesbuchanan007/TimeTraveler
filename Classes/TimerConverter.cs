@@ -28,6 +28,9 @@
                             case "Seconds":
                                 Result = Request * 86400;
                                 break;
+                            case "Hourly Decimal":
+                                Result = Request * 24.0;
+                                break;
                         }
                         break;
 
@@ -45,6 +48,9 @@
                                 break;
                             case "Seconds":
                                 Result = Request * 3600;
+                                break;
+                            case "Hourly Decimal":
+                                Result = Request * 1.0;
                                 break;
                         }
                         break;
@@ -64,6 +70,9 @@
                             case "Seconds":
                                 Result = Request * 60;
                                 break;
+                            case "Hourly Decimal":
+                                Result = Request / 60;
+                                break;
                         }
                         break;
 
@@ -81,6 +90,32 @@
                                 break;
                             case "Seconds":
                                 Result = Request;
+                                break;
+                            case "Hourly Decimal":
+                                Result = Request/ 3600;
+                                break;
+                        }
+                        break;
+
+                    case "10-Second Data":
+                        Request = Request * 10.0;
+
+                        switch (TimeUnit2)
+                        {
+                            case "Days":
+                                Result = Request / 86400;
+                                break;
+                            case "Hours":
+                                Result = Request / 3600;
+                                break;
+                            case "Minutes":
+                                Result = Request / 60;
+                                break;
+                            case "Seconds":
+                                Result = Request;
+                                break;
+                            case "Hourly Decimal":
+                                Result = Request / 3600;
                                 break;
                         }
                         break;

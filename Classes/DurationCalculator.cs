@@ -14,11 +14,11 @@ namespace TimeTraveler
         public int Minutes2 { get; set; }
         public int Seconds2 { get; set; }
 
-        public Duration DurationDays
+        public TimeTraveler.DurationCalculator.Duration DurationDays
         {
             get
             {
-                var duration = new Duration();
+                var duration = new TimeTraveler.DurationCalculator.Duration();
                 var date1Year = StartDate.Year;
                 var date1Month = StartDate.Month;
                 var date1Day = StartDate.Day;

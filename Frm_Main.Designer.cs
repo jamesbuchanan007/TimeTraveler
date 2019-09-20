@@ -512,13 +512,14 @@
             // 
             // lblTime
             // 
-            this.lblTime.AutoSize = true;
+            this.lblTime.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblTime.ForeColor = System.Drawing.Color.White;
-            this.lblTime.Location = new System.Drawing.Point(222, 9);
+            this.lblTime.Location = new System.Drawing.Point(219, 9);
             this.lblTime.Name = "lblTime";
-            this.lblTime.Size = new System.Drawing.Size(77, 13);
+            this.lblTime.Size = new System.Drawing.Size(214, 13);
             this.lblTime.TabIndex = 3;
             this.lblTime.Text = "Time and Date";
+            this.lblTime.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // Frm_Main
             // 

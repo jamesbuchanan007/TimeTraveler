@@ -69,6 +69,8 @@
             this.txtConvRequest = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.cmbConv1 = new System.Windows.Forms.ComboBox();
+            this.lblVersion = new System.Windows.Forms.Label();
+            this.lblTime = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -498,12 +500,34 @@
             this.cmbConv1.Size = new System.Drawing.Size(121, 21);
             this.cmbConv1.TabIndex = 12;
             // 
+            // lblVersion
+            // 
+            this.lblVersion.AutoSize = true;
+            this.lblVersion.ForeColor = System.Drawing.Color.White;
+            this.lblVersion.Location = new System.Drawing.Point(12, 6);
+            this.lblVersion.Name = "lblVersion";
+            this.lblVersion.Size = new System.Drawing.Size(48, 13);
+            this.lblVersion.TabIndex = 2;
+            this.lblVersion.Text = "Version: ";
+            // 
+            // lblTime
+            // 
+            this.lblTime.AutoSize = true;
+            this.lblTime.ForeColor = System.Drawing.Color.White;
+            this.lblTime.Location = new System.Drawing.Point(222, 9);
+            this.lblTime.Name = "lblTime";
+            this.lblTime.Size = new System.Drawing.Size(77, 13);
+            this.lblTime.TabIndex = 3;
+            this.lblTime.Text = "Time and Date";
+            // 
             // Frm_Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkBlue;
             this.ClientSize = new System.Drawing.Size(454, 460);
+            this.Controls.Add(this.lblTime);
+            this.Controls.Add(this.lblVersion);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -515,6 +539,7 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -560,6 +585,8 @@
         private System.Windows.Forms.ComboBox cmbConv1;
         private System.Windows.Forms.Button btnConvCopy;
         private System.Windows.Forms.Button btnConvClear;
+        private System.Windows.Forms.Label lblVersion;
+        private System.Windows.Forms.Label lblTime;
     }
 }
 

@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
+using System.Deployment.Application;
 using System.Diagnostics;
 using System.Drawing;
+using System.Drawing.Text;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -18,11 +20,39 @@ namespace TimeTraveler
 {
     public partial class Frm_Main : Form
     {
+        Timer t = new Timer();
+
         public Frm_Main()
         {
             InitializeComponent();
             cmbConv1.SelectedIndex = 0;
             cmbConv2.SelectedIndex = 0;
+
+            try
+            {
+                var version = ApplicationDeployment.CurrentDeployment.CurrentVersion.ToString(4);
+                lblVersion.Text = "Version: " + version;
+
+            }
+            catch (Exception e)
+            {
+                lblVersion.Text = "Version: Debug";
+            }
+
+            Clock();
+        }
+
+        private void Clock()
+        {
+          
+            t.Interval = 1000;
+            t.Tick += new EventHandler(this.t_Tick);
+            t.Start();
+        }
+
+        private void t_Tick(object sender, EventArgs e)
+        {
+            lblTime.Text = DateTime.Now.ToString("F");
         }
 
         private void BtnDurCalculate_Click(object sender, EventArgs e)

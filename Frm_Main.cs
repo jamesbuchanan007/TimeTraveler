@@ -33,18 +33,27 @@ namespace TimeTraveler
         {
             var currentMonth = DateTime.Today.Month;
             var currentYear = DateTime.Today.Year;
-            var hasEventsThisMonth = false;
+            List<string> eventsThisMonth = new List<string>();
 
             for (int i = 0; i < EventDictionary.Count; i++)
             {
                 if (EventDictionary[i].Date.Month == currentMonth && EventDictionary[i].Date.Year == currentYear)
                 {
-                    hasEventsThisMonth = true;
-                    txtDaysEvents.AppendText(EventDictionary[i].Name + " - " + EventDictionary[i].Date.ToString("d") + "\n\r");
+                  eventsThisMonth.Add(EventDictionary[i].Name + " - " + EventDictionary[i].Date.ToString("d"));}
+            }
+
+            if (eventsThisMonth.Count == 0)
+            {
+                txtDaysEvents.Text = "No Events This Month";
+            }
+            else
+            {
+                foreach (var item in eventsThisMonth)
+                {
+                    txtDaysEvents.AppendText("\n\r" + item);
                 }
             }
 
-            if (!hasEventsThisMonth) txtDaysEvents.AppendText("No Events this Month...");
         }
 
         public void LoadEvents()
@@ -234,24 +243,120 @@ namespace TimeTraveler
 
             if (result == DialogResult.Yes)
             {
-                dateTimePickerDays.Enabled = false;
-                txtDaysEvent.ReadOnly = true;
-                btnDaysAdd.Enabled = true;
-                btnDaysEdit.Enabled = true;
-                btnDaysDelete.Enabled = true;
-                btnDaysCancel.Enabled = false;
-                cmbDays.Enabled = true;
-                btnDaysEnter.Enabled = false;
-                txtDaysEvent.Text = "";
-                txtDaysEvent.Enabled = false;
-
-                CmbDays_SelectedIndexChanged(sender, e);
+                Reset(sender, e);
             }
+        }
+
+        private void Reset(object sender, EventArgs e)
+        {
+            dateTimePickerDays.Enabled = false;
+            txtDaysEvent.ReadOnly = true;
+            btnDaysAdd.Enabled = true;
+            btnDaysEdit.Enabled = true;
+            btnDaysDelete.Enabled = true;
+            btnDaysCancel.Enabled = false;
+            cmbDays.Enabled = true;
+            btnDaysEnter.Enabled = false;
+            txtDaysEvent.Text = "";
+            txtDaysEvent.Enabled = false;
+
+            CmbDays_SelectedIndexChanged(sender, e);
         }
 
         private void BtnDaysEnter_Click(object sender, EventArgs e)
         {
+            var addEnabled = btnDaysAdd.Enabled;
+            var editEnabled = btnDaysEdit.Enabled;
+            var deleteEnabled = btnDaysDelete.Enabled;
 
+            if (addEnabled)
+            {
+                if (string.IsNullOrEmpty(txtDaysEvent.Text))
+                {
+                    MessageBox.Show("Cannot Leave Blank", "Time Traveler", MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning);
+                    txtDaysEvent.Focus();
+                }
+
+                var result = MessageBox.Show("Add New Event: " + txtDaysEvent.Text + "?", "Time Traveler",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (result == DialogResult.Yes)
+                {
+                    SqlConnection connection;
+                    SqlCommand command;
+                    var connectionString = Settings.Default.LocalDb;
+                    connection = new SqlConnection(connectionString);
+                    
+                    var sql = "INSERT INTO Event (Event, Date, Date_Added) " +
+                          "Values (@Event,@Date,@DateAdded)";
+                    try
+                    {
+                        connection.Open();
+                        command = new SqlCommand(sql, connection);
+                        command.Parameters.AddWithValue("@Event", txtDaysEvent.Text);
+                        command.Parameters.AddWithValue("@Date", Convert.ToDateTime(dateTimePickerDays.Text));
+                        command.Parameters.AddWithValue("@DateAdded", DateTime.Today);
+                        command.ExecuteNonQuery();
+                        MessageBox.Show(txtDaysEvent.Text + " Added...", "Time Traveler", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        txtDaysEvents.Clear();
+                        LoadEvents();
+                        LoadEventsThisMonth();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Could Not Save Event...\n\r" + ex, "Time Traveler", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+
+            if (editEnabled)
+            {
+                if (string.IsNullOrEmpty(txtDaysEvent.Text))
+                {
+                    MessageBox.Show("Cannot Leave Blank", "Time Traveler", MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning);
+                    txtDaysEvent.Focus();
+                }
+
+                var result = MessageBox.Show("Save: " + txtDaysEvent.Text + "?", "Time Traveler",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (result == DialogResult.Yes)
+                {
+                    var eventId = EventDictionary[cmbDays.SelectedIndex].EventId;
+                    SqlConnection connection;
+                    SqlCommand command;
+                    var connectionString = Settings.Default.LocalDb;
+                    connection = new SqlConnection(connectionString);
+
+                    var sql = "UPDATE Event Set " +
+                              "Event = '" + txtDaysEvent.Text + "', " +
+                              "Date = '" + dateTimePickerDays.Value.Date + "' " +
+                              "WHERE Event_Id = " + eventId;
+                    try
+                    {
+                        connection.Open();
+                        command = new SqlCommand(sql, connection);
+                        command.ExecuteNonQuery();
+                        command.Dispose();
+                        connection.Close();
+
+                        MessageBox.Show(txtDaysEvent.Text + " Saved...", "Time Traveler", MessageBoxButtons.OK,
+                            MessageBoxIcon.Information);
+
+                        txtDaysEvents.Clear();
+                        LoadEvents();
+                        LoadEventsThisMonth();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Could Not Save Event...\n\r" + ex, "Time Traveler", MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
+                    }
+                }
+            }
         }
 
         private void BtnDaysEdit_Click(object sender, EventArgs e)
@@ -275,7 +380,7 @@ namespace TimeTraveler
 
             var result = MessageBox.Show("Delete " + cmbDays.Text + "?", "Time Traveler", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
-            if(result == DialogResult.Yes)
+            if (result == DialogResult.Yes)
             {
                 var index = cmbDays.SelectedIndex;
                 var dbId = EventDictionary[index].EventId;
@@ -291,11 +396,11 @@ namespace TimeTraveler
                     adapter.UpdateCommand = connection.CreateCommand();
                     adapter.UpdateCommand.CommandText = sql;
                     adapter.UpdateCommand.ExecuteNonQuery();
-                    MessageBox.Show(cmbDays.Text + " Deleted...", "Time Traveler",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                    MessageBox.Show(cmbDays.Text + " Deleted...", "Time Traveler", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show( "Unable to Delete... \n\r" +ex,"Time Traveler",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                    MessageBox.Show("Unable to Delete... \n\r" + ex, "Time Traveler", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
 
